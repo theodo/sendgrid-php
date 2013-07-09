@@ -28,14 +28,12 @@
         </ul>
       </header>
       <section>
-        <h1>
-<a name="sendgrid-php" class="anchor" href="#sendgrid-php"><span class="octicon octicon-link"></span></a>sendgrid-php</h1>
-
-<p>This library allows you to quickly and easily send emails through SendGrid using PHP.</p>
+        <p>This library allows you to quickly and easily send emails through SendGrid using PHP.</p>
 
 <div class="highlight"><pre><span class="nv">$sendgrid</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SendGrid</span><span class="p">(</span><span class="s1">'username'</span><span class="p">,</span> <span class="s1">'password'</span><span class="p">);</span>
 <span class="nv">$mail</span>     <span class="o">=</span> <span class="k">new</span> <span class="nx">SendGrid\Mail</span><span class="p">();</span>
 <span class="nv">$mail</span><span class="o">-&gt;</span><span class="na">addTo</span><span class="p">(</span><span class="s1">'foo@bar.com'</span><span class="p">)</span><span class="o">-&gt;</span>
+       <span class="na">addTo</span><span class="p">(</span><span class="s1">'dude@bar.com'</span><span class="p">)</span><span class="o">-&gt;</span>
        <span class="na">setFrom</span><span class="p">(</span><span class="s1">'me@bar.com'</span><span class="p">)</span><span class="o">-&gt;</span>
        <span class="na">setSubject</span><span class="p">(</span><span class="s1">'Subject goes here'</span><span class="p">)</span><span class="o">-&gt;</span>
        <span class="na">setText</span><span class="p">(</span><span class="s1">'Hello World!'</span><span class="p">)</span><span class="o">-&gt;</span>
@@ -175,6 +173,24 @@ For an explanation of the benefits of each, refer to <a href="http://docs.sendgr
        <span class="o">...</span>
        <span class="nx">addAttachment</span><span class="p">(</span><span class="s2">"../path/to/file.txt"</span><span class="p">);</span>    
 </pre></div>
+
+<p><strong>Important Gotcha</strong>: <code>setBcc</code> is not supported with attachments. This is by design. Instead use multiple <code>addTo</code>s. Each user will receive their own personalized email with that setup, and only see their own email.</p>
+
+<h3>
+<a name="bcc" class="anchor" href="#bcc"><span class="octicon octicon-link"></span></a>Bcc</h3>
+
+<p>Use multiple <code>addTo</code>s as a superior alternative to <code>setBcc</code>.</p>
+
+<div class="highlight"><pre><span class="nv">$mail</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SendGrid\Mail</span><span class="p">();</span>
+<span class="nv">$mail</span><span class="o">-&gt;</span><span class="na">addTo</span><span class="p">(</span><span class="s1">'foo@bar.com'</span><span class="p">)</span><span class="o">-&gt;</span>
+       <span class="na">addTo</span><span class="p">(</span><span class="s1">'someotheraddress@bar.com'</span><span class="p">)</span><span class="o">-&gt;</span>
+       <span class="na">addTo</span><span class="p">(</span><span class="s1">'another@another.com'</span><span class="p">)</span><span class="o">-&gt;</span>
+       <span class="o">...</span>
+</pre></div>
+
+<p>Standard <code>setBcc</code> will hide who the email is addressed to. If you use the multiple addTo, each user will receive a personalized email showing **only* their email. This is more friendly and more personal. Additionally, it is a good idea to use multiple <code>addTo</code>s because setBcc is not supported with attachments. This is by design.</p>
+
+<p>So just remember, when thinking 'bcc', instead use multiple <code>addTo</code>s.</p>
 
 <h3>
 <a name="from-name-and-reply-to" class="anchor" href="#from-name-and-reply-to"><span class="octicon octicon-link"></span></a>From-Name and Reply-To</h3>
