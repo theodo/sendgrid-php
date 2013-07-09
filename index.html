@@ -279,6 +279,13 @@ vendor/bin/phpunit Test/
 
 <div class="highlight"><pre>phpunit Test/
 </pre></div>
+
+<h2>
+<a name="known-issues" class="anchor" href="#known-issues"><span class="octicon octicon-link"></span></a>Known Issues</h2>
+
+<ul>
+<li>When using the smtp version (which is built on top of swiftmailer), any FROM names with parentheses will have the content of the parentheses stripped out. If this happens please use the web version of the library. Read more about this in <a href="https://github.com/sendgrid/sendgrid-php/issues/27">issue #27</a>.</li>
+</ul>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/sendgrid">sendgrid</a></p>
