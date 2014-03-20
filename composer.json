@@ -3,9 +3,15 @@
   "description": "This library allows you to quickly and easily send emails through SendGrid using PHP.",
   "license": "MIT",
   "keywords": ["SendGrid", "sendgrid", "email", "send", "grid"],
+  "repositories": [
+    {
+      "url": "git@github.com:theodo/unirest-php.git",
+      "type": "vcs"
+    }
+  ],
   "require": {
     "php": ">=5.3",
-    "mashape/unirest-php": "dev-master",
+    "theodo/unirest-php": "dev-php5.5-@filename-uploading-compatibility@dev",
     "sendgrid/smtpapi": "0.0.1"
   },
   "require-dev": {
