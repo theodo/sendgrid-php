@@ -11,7 +11,7 @@
   ],
   "require": {
     "php": ">=5.3",
-    "theodo/unirest-php": "dev-php5.5-@filename-uploading-compatibility@dev",
+    "mashape/unirest-php": "dev-master",
     "sendgrid/smtpapi": "0.0.1"
   },
   "require-dev": {
